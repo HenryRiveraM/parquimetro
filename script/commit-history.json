@@ -1,11 +1,11 @@
 [
   {
-    "sha": "HEAD",
+    "sha": "fcab6dc89c6a3516f231ef66d71ad3e9953d4240",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-06T16:12:29.000Z",
       "message": "feat(domain): validar que salida no sea anterior a entrada",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/fcab6dc89c6a3516f231ef66d71ad3e9953d4240"
     },
     "stats": {
       "total": 31,
@@ -15,6 +15,25 @@
     },
     "coverage": 75,
     "test_count": 2,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-06T16:18:13.000Z",
+      "message": "feat(domain): diurno mínimo 1 min cobra 1h (10 Bs) con desglose por día",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 53,
+      "additions": 49,
+      "deletions": 4,
+      "date": "2025-09-06"
+    },
+    "coverage": 88.89,
+    "test_count": 3,
     "failed_tests": 0,
     "conclusion": "success"
   }

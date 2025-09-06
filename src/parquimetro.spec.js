@@ -12,3 +12,15 @@ describe("Parquimetro - Validación de horarios", () => {
     })).toThrow("La hora de salida no puede ser anterior a la de entrada");
   });
 });
+
+describe("Parquimetro - Diurno mínimo", () => {
+  it("1 minuto dentro de 06:00–22:00 cobra 10 Bs", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 6, 10, 0),  // 10:00
+      salida:  dt(2025, 9, 6, 10, 1)   // 10:01
+    });
+    expect(r.total).toBe(10);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(10);
+  });
+});
