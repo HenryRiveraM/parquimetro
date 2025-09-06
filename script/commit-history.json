@@ -19,12 +19,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "53f10786de3a2448e50383e14cc064e7f0a9f9f2",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-06T16:18:13.000Z",
       "message": "feat(domain): diurno mínimo 1 min cobra 1h (10 Bs) con desglose por día",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/53f10786de3a2448e50383e14cc064e7f0a9f9f2"
     },
     "stats": {
       "total": 53,
@@ -34,6 +34,25 @@
     },
     "coverage": 88.89,
     "test_count": 3,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-06T16:21:05.000Z",
+      "message": "feat(domain): diurno múltiple cobra por fracción (61 min = 20 Bs)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 12,
+      "additions": 12,
+      "deletions": 0,
+      "date": "2025-09-06"
+    },
+    "coverage": 88.89,
+    "test_count": 4,
     "failed_tests": 0,
     "conclusion": "success"
   }

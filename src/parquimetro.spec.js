@@ -24,3 +24,15 @@ describe("Parquimetro - Diurno mínimo", () => {
     expect(r.desglose[0].totalDia).toBe(10);
   });
 });
+
+describe("Parquimetro - Diurno múltiple", () => {
+  it("61 minutos dentro de 06:00–22:00 cobra 20 Bs", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 6, 10, 0),   // 10:00
+      salida:  dt(2025, 9, 6, 11, 1)    // 11:01 → 61 minutos
+    });
+    expect(r.total).toBe(20);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(20);
+  });
+});
