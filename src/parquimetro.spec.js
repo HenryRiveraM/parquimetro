@@ -48,3 +48,15 @@ describe("Parquimetro - Nocturno mínimo", () => {
     expect(r.desglose[0].totalDia).toBe(6);
   });
 });
+
+describe("Parquimetro - Nocturno múltiple", () => {
+  it("61 minutos dentro de 22:00–06:00 cobra 12 Bs", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 6, 22, 0),  // 22:00
+      salida:  dt(2025, 9, 6, 23, 1)   // 23:01 -> 61 minutos
+    });
+    expect(r.total).toBe(12);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(12);
+  });
+});

@@ -57,12 +57,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "a8109fcc2cc4994a9c280109078c0100d0930066",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-08T01:07:33.000Z",
       "message": "feat(domain): nocturno mínimo 1 min cobra 1h (6 Bs) con desglose",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/a8109fcc2cc4994a9c280109078c0100d0930066"
     },
     "stats": {
       "total": 44,
@@ -72,6 +72,25 @@
     },
     "coverage": 92.11,
     "test_count": 5,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-08T01:09:41.000Z",
+      "message": "feat(domain): nocturno múltiple cobra por fracción (61 min = 12 Bs)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 12,
+      "additions": 12,
+      "deletions": 0,
+      "date": "2025-09-08"
+    },
+    "coverage": 92.11,
+    "test_count": 6,
     "failed_tests": 0,
     "conclusion": "success"
   }
