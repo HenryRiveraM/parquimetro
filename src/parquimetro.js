@@ -58,6 +58,27 @@ export function calcularTarifa({ entrada, salida }) {
     };
   }
 
-  // Otros casos (cruces y multi-día) se cubrirán en ciclos siguientes
+
+  // --- Cruce diurno → nocturno (mismo día), p.ej. 21:30 → 22:30 ---
+  if (sameDay) {
+    const cut22 = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 22, 0, 0, 0);
+    const startsInDay = inDayWindow(start.getHours());
+    const endsInNight = inNightWindow(end.getHours());
+    if (startsInDay && endsInNight && end > cut22 && start < cut22) {
+      const minsDay   = minutesBetween(start, cut22);
+      const minsNight = minutesBetween(cut22, end);
+      const bruto = (ceilHoursFromMinutes(minsDay) * DAY_RATE) +
+                    (ceilHoursFromMinutes(minsNight) * NIGHT_RATE);
+      const totalDia = Math.min(bruto, DAILY_CAP);
+      const fecha = startOfDay(start).toISOString().slice(0,10);
+      const total = Number(totalDia.toFixed(2));
+      return {
+        total,
+        desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }],
+      };
+    }
+  }
+
+  // Otros casos (cruces madrugada y multi-día) se cubren en los siguientes ciclos
   return { total: 0, desglose: [] };
 }

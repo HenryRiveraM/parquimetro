@@ -76,12 +76,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "23adfd90267d300c5c29d470d88c0f644d3d72ee",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-08T01:09:41.000Z",
       "message": "feat(domain): nocturno múltiple cobra por fracción (61 min = 12 Bs)",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/23adfd90267d300c5c29d470d88c0f644d3d72ee"
     },
     "stats": {
       "total": 12,
@@ -91,6 +91,25 @@
     },
     "coverage": 92.11,
     "test_count": 6,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-08T01:15:51.000Z",
+      "message": "feat(domain): cruce diurno→nocturno (21:30→22:30 = 16 Bs)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 35,
+      "additions": 34,
+      "deletions": 1,
+      "date": "2025-09-08"
+    },
+    "coverage": 94,
+    "test_count": 7,
     "failed_tests": 0,
     "conclusion": "success"
   }

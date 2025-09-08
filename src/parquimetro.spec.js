@@ -60,3 +60,15 @@ describe("Parquimetro - Nocturno múltiple", () => {
     expect(r.desglose[0].totalDia).toBe(12);
   });
 });
+
+describe("Parquimetro - Cruce diurno→nocturno (mismo día)", () => {
+  it("21:30 → 22:30 = 16 Bs (30' diurno + 30' nocturno)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 6, 21, 30),
+      salida:  dt(2025, 9, 6, 22, 30)
+    });
+    expect(r.total).toBe(16);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(16);
+  });
+});
