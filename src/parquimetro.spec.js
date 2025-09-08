@@ -36,3 +36,15 @@ describe("Parquimetro - Diurno múltiple", () => {
     expect(r.desglose[0].totalDia).toBe(20);
   });
 });
+
+describe("Parquimetro - Nocturno mínimo", () => {
+  it("1 minuto dentro de 22:00–06:00 cobra 6 Bs", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 6, 22, 0),  // 22:00
+      salida:  dt(2025, 9, 6, 22, 1)   // 22:01
+    });
+    expect(r.total).toBe(6);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(6);
+  });
+});
