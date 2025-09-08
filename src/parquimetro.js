@@ -1,7 +1,7 @@
 // src/parquimetro.js
-const DAY_RATE = 10;     // 06:00–22:00
-const NIGHT_RATE = 6;    // 22:00–06:00
-const DAILY_CAP = 50;
+const DAY_RATE   = 10;  // 06:00–22:00
+const NIGHT_RATE = 6;   // 22:00–06:00
+const DAILY_CAP  = 50;
 
 function isValidDate(d){ return !isNaN(+d); }
 function ceilHoursFromMinutes(mins){ return mins <= 0 ? 0 : Math.ceil(mins / 60); }
@@ -29,56 +29,60 @@ export function calcularTarifa({ entrada, salida }) {
   const inDayWindow   = (h) => h >= 6 && h < 22;
   const inNightWindow = (h) => h >= 22 || h < 6;
 
-  // Caso DIURNO mismo día (ya implementado)
-  if (sameDay && inDayWindow(start.getHours()) && inDayWindow(end.getHours())) {
-    const mins  = minutesBetween(start, end);
-    const hours = ceilHoursFromMinutes(mins);
-    const bruto = hours * DAY_RATE;
-    const totalDia = Math.min(bruto, DAILY_CAP);
-    const fecha = startOfDay(start).toISOString().slice(0,10);
-    const total = Number(totalDia.toFixed(2));
-    return {
-      total,
-      desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }],
-    };
-  }
-
-  // **Nuevo**: Caso NOCTURNO mismo día (22:00–24:00) *o* (00:00–06:00 del MISMO día
-  // (este bloque cubre el test 22:00–22:01; más adelante cubriremos cruces y multi-día)
-  if (sameDay && inNightWindow(start.getHours()) && inNightWindow(end.getHours())) {
-    const mins  = minutesBetween(start, end);
-    const hours = ceilHoursFromMinutes(mins);
-    const bruto = hours * NIGHT_RATE;
-    const totalDia = Math.min(bruto, DAILY_CAP);
-    const fecha = startOfDay(start).toISOString().slice(0,10);
-    const total = Number(totalDia.toFixed(2));
-    return {
-      total,
-      desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }],
-    };
-  }
-
-
   // --- Cruce diurno → nocturno (mismo día), p.ej. 21:30 → 22:30 ---
   if (sameDay) {
     const cut22 = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 22, 0, 0, 0);
     const startsInDay = inDayWindow(start.getHours());
     const endsInNight = inNightWindow(end.getHours());
-    if (startsInDay && endsInNight && end > cut22 && start < cut22) {
+    if (startsInDay && endsInNight && start < cut22 && end > cut22) {
       const minsDay   = minutesBetween(start, cut22);
       const minsNight = minutesBetween(cut22, end);
-      const bruto = (ceilHoursFromMinutes(minsDay) * DAY_RATE) +
+      const bruto = (ceilHoursFromMinutes(minsDay)   * DAY_RATE) +
                     (ceilHoursFromMinutes(minsNight) * NIGHT_RATE);
       const totalDia = Math.min(bruto, DAILY_CAP);
       const fecha = startOfDay(start).toISOString().slice(0,10);
       const total = Number(totalDia.toFixed(2));
-      return {
-        total,
-        desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }],
-      };
+      return { total, desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }] };
     }
   }
 
-  // Otros casos (cruces madrugada y multi-día) se cubren en los siguientes ciclos
+  // --- Cruce nocturno → diurno (mismo día), p.ej. 05:50 → 06:10 ---
+  if (sameDay) {
+    const cut06 = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 6, 0, 0, 0);
+    const startsInNight = inNightWindow(start.getHours());
+    const endsInDay     = inDayWindow(end.getHours());
+    if (startsInNight && endsInDay && start < cut06 && end > cut06) {
+      const minsNight = minutesBetween(start, cut06);
+      const minsDay   = minutesBetween(cut06, end);
+      const bruto = (ceilHoursFromMinutes(minsNight) * NIGHT_RATE) +
+                    (ceilHoursFromMinutes(minsDay)   * DAY_RATE);
+      const totalDia = Math.min(bruto, DAILY_CAP);
+      const fecha = startOfDay(start).toISOString().slice(0,10);
+      const total = Number(totalDia.toFixed(2));
+      return { total, desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }] };
+    }
+  }
+
+  // --- Diurno mismo día ---
+  if (sameDay && inDayWindow(start.getHours()) && inDayWindow(end.getHours())) {
+    const mins  = minutesBetween(start, end);
+    const bruto = ceilHoursFromMinutes(mins) * DAY_RATE;
+    const totalDia = Math.min(bruto, DAILY_CAP);
+    const fecha = startOfDay(start).toISOString().slice(0,10);
+    const total = Number(totalDia.toFixed(2));
+    return { total, desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }] };
+  }
+
+  // --- Nocturno mismo día ---
+  if (sameDay && inNightWindow(start.getHours()) && inNightWindow(end.getHours())) {
+    const mins  = minutesBetween(start, end);
+    const bruto = ceilHoursFromMinutes(mins) * NIGHT_RATE;
+    const totalDia = Math.min(bruto, DAILY_CAP);
+    const fecha = startOfDay(start).toISOString().slice(0,10);
+    const total = Number(totalDia.toFixed(2));
+    return { total, desglose: [{ fecha, bruto: Number(bruto.toFixed(2)), totalDia: total }] };
+  }
+
+  // Otros casos (multi-día, tope por día, ticket perdido) → siguientes ciclos
   return { total: 0, desglose: [] };
 }

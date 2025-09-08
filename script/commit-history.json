@@ -95,12 +95,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "9c0c525762c5802cdf989465c2bde38e1b9a0bfd",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-08T01:15:51.000Z",
       "message": "feat(domain): cruce diurno→nocturno (21:30→22:30 = 16 Bs)",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/9c0c525762c5802cdf989465c2bde38e1b9a0bfd"
     },
     "stats": {
       "total": 35,
@@ -110,6 +110,25 @@
     },
     "coverage": 94,
     "test_count": 7,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-08T01:26:50.000Z",
+      "message": "feat(domain): cruce diurno→nocturno (21:30→22:30 = 16 Bs)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 96,
+      "additions": 56,
+      "deletions": 40,
+      "date": "2025-09-08"
+    },
+    "coverage": 95,
+    "test_count": 8,
     "failed_tests": 0,
     "conclusion": "success"
   }

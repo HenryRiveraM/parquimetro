@@ -72,3 +72,15 @@ describe("Parquimetro - Cruce diurno→nocturno (mismo día)", () => {
     expect(r.desglose[0].totalDia).toBe(16);
   });
 });
+
+describe("Parquimetro - Cruce nocturno→diurno (madrugada)", () => {
+  it("05:50 → 06:10 = 16 Bs (10' nocturno + 10' diurno)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 7, 5, 50),
+      salida:  dt(2025, 9, 7, 6, 10)
+    });
+    expect(r.total).toBe(16);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(16);
+  });
+});
