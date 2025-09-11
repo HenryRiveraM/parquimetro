@@ -171,12 +171,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "589aaa054c802a446854179639fbd53a09cb30db",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-11T02:29:58.000Z",
       "message": "feat(domain): ticket perdido retorna 80 Bs y omite cálculo normal",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/589aaa054c802a446854179639fbd53a09cb30db"
     },
     "stats": {
       "total": 24,
@@ -186,6 +186,25 @@
     },
     "coverage": 92.31,
     "test_count": 11,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-11T02:35:31.000Z",
+      "message": "feat(domain): tope por día aplicado al cruzar días (21:00→día siguiente 18:00)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 15,
+      "additions": 15,
+      "deletions": 0,
+      "date": "2025-09-11"
+    },
+    "coverage": 92.31,
+    "test_count": 12,
     "failed_tests": 0,
     "conclusion": "success"
   }

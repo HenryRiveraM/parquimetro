@@ -115,4 +115,19 @@ describe("Parquímetro – Ticket perdido", () => {
   });
 });
 
+describe("Parquímetro – Tope por día al cruzar días", () => {
+  it("aplica 50 Bs por cada día de forma independiente (total = suma de días cappeados)", () => {
+    // Día 1: 21:00→24:00  => 1h diurna (10) + 2h nocturna (12) = 22 (NO cap)
+    // Día 2: 00:00→18:00  => 6h noct (36) + 12h diurnas (120) = 156 -> cap a 50
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 11, 21, 0),
+      salida:  dt(2025, 9, 12, 18, 0)
+    });
+    expect(r.desglose.length).toBe(2);
+    expect(r.desglose[0].totalDia).toBe(22); // día 1
+    expect(r.desglose[1].totalDia).toBe(50); // día 2 cappeado
+    expect(r.total).toBe(72);                // 22 + 50
+  });
+});
+
 });
