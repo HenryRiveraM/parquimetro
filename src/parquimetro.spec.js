@@ -130,4 +130,46 @@ describe("Parquímetro – Tope por día al cruzar días", () => {
   });
 });
 
+describe("Parquímetro – Borde 22:00 exacto", () => {
+  it("21:00→22:00 = 10 Bs (diurno exacto)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 13, 21, 0),
+      salida:  dt(2025, 9, 13, 22, 0)
+    });
+    expect(r.total).toBe(10);
+    expect(r.desglose[0].totalDia).toBe(10);
+  });
+
+
+  it("22:00→22:01 = 6 Bs (inicio nocturno)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 13, 22, 0),
+      salida:  dt(2025, 9, 13, 22, 1)
+    });
+    expect(r.total).toBe(6);
+    expect(r.desglose[0].totalDia).toBe(6);
+  });
+});
+
+describe("Parquímetro – Borde 06:00 exacto", () => {
+  it("05:00→06:00 = 6 Bs (nocturno exacto)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 14, 5, 0),
+      salida:  dt(2025, 9, 14, 6, 0)
+    });
+    expect(r.total).toBe(6);
+    expect(r.desglose[0].totalDia).toBe(6);
+  });
+
+
+  it("06:00→06:01 = 10 Bs (inicio diurno)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 14, 6, 0),
+      salida:  dt(2025, 9, 14, 6, 1)
+    });
+    expect(r.total).toBe(10);
+    expect(r.desglose[0].totalDia).toBe(10);
+  });
+});
+
 });
