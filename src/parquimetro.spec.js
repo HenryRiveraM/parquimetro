@@ -185,4 +185,46 @@ describe("Parquímetro – Presentación monetaria", () => {
   });
 });
 
+describe("Parquímetro – Ceil por subtramo (corte 22:00)", () => {
+  it("21:55→22:05 cobra 16 Bs (5' diurno + 5' nocturno)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 17, 21, 55),
+      salida:  dt(2025, 9, 17, 22, 5)
+    });
+    expect(r.total).toBe(16);
+    expect(r.desglose.length).toBe(1);
+    expect(r.desglose[0].totalDia).toBe(16);
+  });
+});
+
+describe("Parquímetro – Multi-día con tope mixto", () => {
+  it("Día1 sin cap (22) + Día2 cap a 50 = total 72", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 18, 21, 0),
+      salida:  dt(2025, 9, 19, 18, 0)
+    });
+    expect(r.desglose.length).toBe(2);
+    expect(r.desglose[0].totalDia).toBe(22);
+    expect(r.desglose[1].totalDia).toBe(50);
+    expect(r.total).toBe(72);
+  });
+});
+
+describe("Parquímetro – Acumulación estable con 2 decimales", () => {
+  it("Total es la suma exacta de los totalDia (sin errores de acumulación)", () => {
+    const r1 = calcularTarifa({ entrada: dt(2025, 9, 20, 8, 0),  salida: dt(2025, 9, 20, 18, 0) });
+    const r2 = calcularTarifa({ entrada: dt(2025, 9, 21, 22, 0), salida: dt(2025, 9, 21, 23, 1) });
+    const r3 = calcularTarifa({ entrada: dt(2025, 9, 22, 6, 0),  salida: dt(2025, 9, 22, 6, 1) });
+
+    // simulamos el total de 3 días sumando totalDia individuales
+    const total = Number(
+      (r1.desglose[0].totalDia + r2.desglose[0].totalDia + r3.desglose[0].totalDia).toFixed(2)
+    );
+    expect(total).toBe(72);
+    expect(r1.desglose[0].totalDia).toBe(50);
+    expect(r2.desglose[0].totalDia).toBe(12);
+    expect(r3.desglose[0].totalDia).toBe(10);
+  });
+});
+
 });

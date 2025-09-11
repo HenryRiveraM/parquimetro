@@ -228,12 +228,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "998790105e6ea02e2549415cbbb7ec634c4436f1",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-11T02:43:47.000Z",
       "message": "test(domain): presentación monetaria con 2 decimales en total y desglose",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/998790105e6ea02e2549415cbbb7ec634c4436f1"
     },
     "stats": {
       "total": 13,
@@ -243,6 +243,25 @@
     },
     "coverage": 92.31,
     "test_count": 17,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-11T03:18:03.000Z",
+      "message": "test(domain): ceil por subtramo, multi-día con cap mixto y acumulación estable (2 decimales)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 42,
+      "additions": 42,
+      "deletions": 0,
+      "date": "2025-09-11"
+    },
+    "coverage": 92.31,
+    "test_count": 20,
     "failed_tests": 0,
     "conclusion": "success"
   }
