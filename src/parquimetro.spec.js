@@ -172,4 +172,17 @@ describe("Parquímetro – Borde 06:00 exacto", () => {
   });
 });
 
+describe("Parquímetro – Presentación monetaria", () => {
+  it("formatea total y desglose con 2 decimales", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 15, 10, 0),
+      salida:  dt(2025, 9, 15, 10, 1) // 1' diurno = 10 Bs
+    });
+    // toBeCloseTo permite comparar con precisión de 2 decimales
+    expect(r.total).toBeCloseTo(10.00, 2);
+    expect(r.desglose[0].totalDia).toBeCloseTo(10.00, 2);
+    expect(r.desglose[0].bruto).toBeCloseTo(10.00, 2);
+  });
+});
+
 });

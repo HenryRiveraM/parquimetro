@@ -209,12 +209,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "db238a1096b684a9c4761798f5805f9e6b29ba7a",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-11T02:40:42.000Z",
       "message": "test(domain): casos borde exactos en 22:00 y 06:00 (diurno/nocturno) en verde",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/db238a1096b684a9c4761798f5805f9e6b29ba7a"
     },
     "stats": {
       "total": 42,
@@ -224,6 +224,25 @@
     },
     "coverage": 92.31,
     "test_count": 16,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-11T02:43:47.000Z",
+      "message": "test(domain): presentación monetaria con 2 decimales en total y desglose",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 13,
+      "additions": 13,
+      "deletions": 0,
+      "date": "2025-09-11"
+    },
+    "coverage": 92.31,
+    "test_count": 17,
     "failed_tests": 0,
     "conclusion": "success"
   }
