@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html xml:lang="es">
-  <head>
-    <title>Sumador</title>
-  </head>
-  <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
-    <div id="resultado-div"></div>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Parquímetro</title>
+</head>
+<body>
+  <h1>Calculadora de Tarifa de Estacionamiento</h1>
 
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+  <form id="formParquimetro">
+    <label>
+      Hora de entrada:
+      <input type="datetime-local" id="entrada" required>
+    </label>
+    <br><br>
+
+    <label>
+      Hora de salida:
+      <input type="datetime-local" id="salida" required>
+    </label>
+    <br><br>
+
+    <label>
+      <input type="checkbox" id="ticketPerdido">
+      Ticket perdido
+    </label>
+    <br><br>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <h2>Resultado</h2>
+  <pre id="resultado">--</pre>
+
+  <!-- Se importa la lógica desde parquimetro.js -->
+  <script type="module">
+    import { calcularTarifa } from "./src/parquimetro.js";
+
+    const form = document.getElementById("formParquimetro");
+    const salidaResultado = document.getElementById("resultado");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const entrada = document.getElementById("entrada").value;
+      const salida  = document.getElementById("salida").value;
+      const ticketPerdido = document.getElementById("ticketPerdido").checked;
+
+      try {
+        const r = calcularTarifa({ entrada, salida, ticketPerdido });
+        let texto = `Total a pagar: Bs ${r.total.toFixed(2)}\n`;
+        if (!ticketPerdido) {
+          texto += `Desglose por día:\n`;
+          r.desglose.forEach(d => {
+            texto += `  ${d.fecha}: bruto Bs ${d.bruto.toFixed(2)} → totalDia Bs ${d.totalDia.toFixed(2)}\n`;
+          });
+        }
+        salidaResultado.textContent = texto;
+      } catch (err) {
+        salidaResultado.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
 </html>
