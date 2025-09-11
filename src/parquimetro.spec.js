@@ -84,5 +84,17 @@ describe("Parquimetro - Cruce nocturno→diurno (madrugada)", () => {
     expect(r.desglose[0].totalDia).toBe(16);
   });
 
+  describe("Parquimetro - Cruce de días calendario", () => {
+  it("23:10 (día1) → 05:20 (día2) = 42 Bs con desglose por fecha", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 9, 23, 10),
+      salida:  dt(2025, 9, 10, 5, 20)
+    });
+    expect(r.total).toBe(42);
+    expect(r.desglose.length).toBe(2);
+    expect(r.desglose[0].totalDia).toBe(6);
+    expect(r.desglose[1].totalDia).toBe(36);
+  });
+});
 
 });

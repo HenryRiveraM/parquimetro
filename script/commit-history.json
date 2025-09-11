@@ -133,12 +133,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "4162f4aa5b50419dd4207586496223d673577371",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-11T02:15:09.000Z",
       "message": "feat(domain): aplica tope diario de 50 Bs en mismo día (08:00→18:00)",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/4162f4aa5b50419dd4207586496223d673577371"
     },
     "stats": {
       "total": 2,
@@ -148,6 +148,25 @@
     },
     "coverage": 95,
     "test_count": 8,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-11T02:21:47.000Z",
+      "message": "feat(domain): cálculo por día con partición 06/22, tope diario y multi-día (desglose por día)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 148,
+      "additions": 87,
+      "deletions": 61,
+      "date": "2025-09-11"
+    },
+    "coverage": 92.06,
+    "test_count": 9,
     "failed_tests": 0,
     "conclusion": "success"
   }
