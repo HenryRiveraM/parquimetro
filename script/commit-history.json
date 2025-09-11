@@ -114,18 +114,37 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "d2f9865b170b7d0f16c34ebe994b47908d933692",
     "author": "Henry Alejandro Rivera Mendez",
     "commit": {
       "date": "2025-09-08T01:26:50.000Z",
       "message": "feat(domain): cruce diurno→nocturno (21:30→22:30 = 16 Bs)",
-      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/d2f9865b170b7d0f16c34ebe994b47908d933692"
     },
     "stats": {
       "total": 96,
       "additions": 56,
       "deletions": 40,
       "date": "2025-09-08"
+    },
+    "coverage": 95,
+    "test_count": 8,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "Henry Alejandro Rivera Mendez",
+    "commit": {
+      "date": "2025-09-11T02:15:09.000Z",
+      "message": "feat(domain): aplica tope diario de 50 Bs en mismo día (08:00→18:00)",
+      "url": "https://github.com/HenryRiveraM/parquimetro/commit/HEAD"
+    },
+    "stats": {
+      "total": 2,
+      "additions": 2,
+      "deletions": 0,
+      "date": "2025-09-11"
     },
     "coverage": 95,
     "test_count": 8,
