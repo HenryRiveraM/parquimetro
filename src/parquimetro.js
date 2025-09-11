@@ -69,7 +69,11 @@ function splitByDays(entrada, salida){
   return out;
 }
 
-export function calcularTarifa({ entrada, salida }) {
+export function calcularTarifa({ entrada, salida, ticketPerdido=false }) {
+
+  if (ticketPerdido) {
+    return { total: 80, desglose: [], ticketPerdido: true };
+  }
   const start = new Date(entrada);
   const end   = new Date(salida);
 

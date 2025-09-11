@@ -97,4 +97,22 @@ describe("Parquimetro - Cruce nocturno→diurno (madrugada)", () => {
   });
 });
 
+describe("Parquímetro – Ticket perdido", () => {
+  it("retorna 80 Bs y sin desglose (sin necesidad de horas)", () => {
+    const r = calcularTarifa({ ticketPerdido: true });
+    expect(r.total).toBe(80);
+    expect(r.desglose).toEqual([]);
+  });
+
+  it("retorna 80 Bs incluso si se pasan horas (reemplaza cálculo normal)", () => {
+    const r = calcularTarifa({
+      entrada: dt(2025, 9, 12, 10, 0),
+      salida:  dt(2025, 9, 12, 18, 0),
+      ticketPerdido: true
+    });
+    expect(r.total).toBe(80);
+    expect(r.desglose).toEqual([]);
+  });
+});
+
 });
